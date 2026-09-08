@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adham Saber — .NET Backend Developer</title>
+<meta name="description" content="Portfolio of Adham Saber — .NET Backend Developer and Computer Science student. C#, ASP.NET Core, SQL Server, C++.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2322D3B3'/%3E%3Ctext x='50' y='67' font-size='52' font-family='monospace' text-anchor='middle' fill='%23080C14'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#080C14',
+          inkalt: '#0B121F',
+          surface: '#101A2B',
+          line: '#1E2A3F',
+          txt: '#E7ECF3',
+          txt2: '#93A2B8',
+          txt3: '#7A8AA3',
+          ateal: '#22D3B3',
+          ablue: '#4C8EFF',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #080C14; }
+  ::selection { background: #22D3B3; color: #080C14; }
+  :focus-visible { outline: 2px solid #4C8EFF; outline-offset: 3px; border-radius: 2px; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #080C14; }
+  ::-webkit-scrollbar-thumb { background: #1E2A3F; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #29405f; }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(147,162,184,0.16) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  .caret { animation: blink 1s step-start infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .caret { animation: none; opacity: 1; }
+    * { transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+
+<body class="bg-ink font-body text-txt antialiased">
+
+<a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-ateal focus:px-4 focus:py-2 focus:text-ink focus:font-medium">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-40 border-b border-line/60 bg-ink/80 backdrop-blur">
+  <nav class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-mono text-lg text-txt">adham<span class="text-ateal caret">_</span></a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a data-nav href="#about" class="text-txt2 hover:text-txt transition-colors">About</a>
+      <a data-nav href="#skills" class="text-txt2 hover:text-txt transition-colors">Skills</a>
+      <a data-nav href="#projects" class="text-txt2 hover:text-txt transition-colors">Projects</a>
+      <a data-nav href="#contact" class="text-txt2 hover:text-txt transition-colors">Contact</a>
+    </div>
+
+    <a href="#contact" class="hidden md:inline-flex items-center rounded-md border border-ateal/40 px-4 py-2 text-sm font-medium text-ateal hover:bg-ateal/10 transition-colors">
+      Get in touch
+    </a>
+
+    <button id="menu-btn" class="md:hidden text-txt2 hover:text-txt" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" class="h-6 w-6">
+        <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" class="h-6 w-6 hidden">
+        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="md:hidden hidden border-t border-line/60 bg-ink/95 backdrop-blur px-6 py-5 flex flex-col gap-4 text-sm">
+    <a href="#about" class="mobile-link text-txt2 hover:text-txt transition-colors">About</a>
+    <a href="#skills" class="mobile-link text-txt2 hover:text-txt transition-colors">Skills</a>
+    <a href="#projects" class="mobile-link text-txt2 hover:text-txt transition-colors">Projects</a>
+    <a href="#contact" class="mobile-link text-txt2 hover:text-txt transition-colors">Contact</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28 scroll-mt-24">
+  <div class="absolute inset-0 dot-grid [mask-image:radial-gradient(ellipse_60%_60%_at_60%_20%,black,transparent)]"></div>
+  <div id="hero-glow" class="pointer-events-none absolute -z-10 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-3xl transition-transform duration-500 ease-out" style="left:62%; top:28%; background: radial-gradient(circle, #22D3B3, #4C8EFF 55%, transparent 72%);"></div>
+
+  <div class="relative mx-auto max-w-6xl px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center">
+    <div>
+      <h1 class="font-display text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-txt">Adham Saber</h1>
+      <p class="mt-4 font-display text-xl sm:text-2xl text-ablue">.NET Backend Developer &amp; Computer Science Student</p>
+      <p class="mt-6 font-body text-base sm:text-lg text-txt2 leading-relaxed max-w-xl">
+        I build highly optimized and efficient software systems by leaning on a deep understanding of memory management and core logic — a mindset rooted in a strong C++ foundation before mastering C# and .NET.
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#projects" class="inline-flex items-center justify-center rounded-md bg-ateal px-6 py-3 text-sm font-semibold text-ink hover:bg-ateal/90 transition-colors">View projects</a>
+        <a href="#contact" class="inline-flex items-center justify-center rounded-md border border-line px-6 py-3 text-sm font-semibold text-txt hover:border-ateal/50 hover:text-ateal transition-colors">Get in touch</a>
+      </div>
+
+      <div class="mt-10 flex items-center gap-5">
+        <a href="https://github.com/AdhamSaber2357" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-txt3 hover:text-ateal transition-colors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/adham-saber-857616334" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-txt3 hover:text-ateal transition-colors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:adhamsaber2367@gmail.com" aria-label="Email" class="text-txt3 hover:text-ateal transition-colors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="rounded-lg border border-line bg-surface/70 shadow-2xl shadow-black/40 overflow-hidden">
+      <div class="flex items-center gap-1.5 border-b border-line px-4 py-3">
+        <span class="h-2.5 w-2.5 rounded-full bg-red-400/50"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/50"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-green-400/50"></span>
+        <span class="ml-3 font-mono text-xs text-txt3">Developer.cs</span>
+      </div>
+      <pre class="p-5 sm:p-6 text-[13px] sm:text-sm leading-relaxed overflow-x-auto"><code id="typed-code" class="font-mono text-txt2 whitespace-pre-wrap break-words"></code><span class="caret text-ateal">▍</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="py-16 md:py-24 border-t border-line/60 bg-inkalt/40 scroll-mt-24">
+  <div class="mx-auto max-w-6xl px-6 grid lg:grid-cols-[1fr_0.8fr] gap-12 lg:gap-16">
+    <div>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold text-txt"><span class="text-ateal font-mono">// </span>About</h2>
+      <p class="mt-6 text-txt2 leading-relaxed">
+        I'm a Computer Science student and a dedicated .NET backend engineer, currently in my third year at Cairo University. Alongside coursework, I practice competitive problem solving regularly and have solved 150+ problems on HackerRank — a habit that keeps my algorithmic thinking sharp and carries directly into cleaner, more efficient backend code.
+      </p>
+      <p class="mt-4 text-txt2 leading-relaxed">
+        I'm currently a trainee in the Digital Egypt Pioneers Initiative (DEPI), following the .NET Full-Stack Web Development track, and I recently completed an intensive one-month training scholarship at the Information Technology Institute (ITI), covering relational databases, T-SQL, C#, .NET, and MVC.
+      </p>
+    </div>
+
+    <dl class="rounded-lg border border-line bg-surface/60 p-6 sm:p-7 font-mono text-sm h-fit">
+      <div class="flex justify-between gap-6 border-b border-line/60 pb-3">
+        <dt class="text-txt3">education</dt>
+        <dd class="text-txt text-right">Computer Science, Cairo University</dd>
+      </div>
+      <div class="flex justify-between gap-6 border-b border-line/60 py-3">
+        <dt class="text-txt3">graduation</dt>
+        <dd class="text-txt text-right">Expected 2028</dd>
+      </div>
+      <div class="flex justify-between gap-6 border-b border-line/60 py-3">
+        <dt class="text-txt3">training</dt>
+        <dd class="text-txt text-right">ITI scholarship, Aug–Sep</dd>
+      </div>
+      <div class="flex justify-between gap-6 border-b border-line/60 py-3">
+        <dt class="text-txt3">program</dt>
+        <dd class="text-txt text-right">DEPI, .NET Full-Stack track</dd>
+      </div>
+      <div class="flex justify-between gap-6 pt-3">
+        <dt class="text-txt3">practice</dt>
+        <dd class="text-txt text-right">150+ HackerRank problems</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="py-16 md:py-24 border-t border-line/60 scroll-mt-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-txt"><span class="text-ateal font-mono">// </span>Skills</h2>
+    <p class="mt-4 text-txt2 max-w-2xl">The languages, frameworks, and habits I reach for when building backend systems.</p>
+
+    <div class="mt-12 grid sm:grid-cols-2 gap-x-12 gap-y-10">
+      <div>
+        <h3 class="text-sm text-txt3 mb-4 pb-2 border-b border-line/60">Core languages</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ateal/50 hover:text-ateal transition-colors">C#</span>
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ateal/50 hover:text-ateal transition-colors">C++</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm text-txt3 mb-4 pb-2 border-b border-line/60">Frameworks &amp; tools</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ablue/50 hover:text-ablue transition-colors">ASP.NET Core</span>
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ablue/50 hover:text-ablue transition-colors">ADO.NET</span>
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ablue/50 hover:text-ablue transition-colors">WinForms</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm text-txt3 mb-4 pb-2 border-b border-line/60">Data</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ateal/50 hover:text-ateal transition-colors">SQL Server</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm text-txt3 mb-4 pb-2 border-b border-line/60">Practices</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ablue/50 hover:text-ablue transition-colors">OOP</span>
+          <span class="inline-flex rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-sm text-txt2 hover:border-ablue/50 hover:text-ablue transition-colors">LINQ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="py-16 md:py-24 border-t border-line/60 bg-inkalt/40 scroll-mt-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-txt"><span class="text-ateal font-mono">// </span>Projects</h2>
+    <p class="mt-4 text-txt2 max-w-2xl">A few things I've built while learning to think in systems, not just syntax.</p>
+
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Project 1 -->
+      <article class="group flex flex-col rounded-lg border border-line bg-surface overflow-hidden hover:border-ateal/40 transition-colors">
+        <div class="flex items-center gap-1.5 border-b border-line px-4 py-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-green-400/40"></span>
+          <span class="ml-3 font-mono text-xs text-txt3">DVLD.sln</span>
+        </div>
+        <div class="flex flex-col flex-1 p-6">
+          <h3 class="font-display text-lg font-semibold text-txt">DVLD Desktop System</h3>
+          <p class="mt-3 text-sm text-txt2 leading-relaxed flex-1">
+            A desktop management system for a Driving and Vehicle License Department, built with C# and Windows Forms. Models real-world entities — drivers, vehicles, and licenses — using object-oriented design and core .NET concepts.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">C#</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">WinForms</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">OOP</span>
+          </div>
+          <a href="https://github.com/AdhamSaber2357/DVLD-Project" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ablue hover:text-ateal transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="group flex flex-col rounded-lg border border-line bg-surface overflow-hidden hover:border-ateal/40 transition-colors">
+        <div class="flex items-center gap-1.5 border-b border-line px-4 py-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-green-400/40"></span>
+          <span class="ml-3 font-mono text-xs text-txt3">AudioPlayer.cpp</span>
+        </div>
+        <div class="flex flex-col flex-1 p-6">
+          <h3 class="font-display text-lg font-semibold text-txt">Dual-Deck DJ Audio Player</h3>
+          <p class="mt-3 text-sm text-txt2 leading-relaxed flex-1">
+            A dual-deck DJ audio player built in C++ with the JUCE framework. Supports independent deck playback, crossfading, A-B looping with cue points, waveform display, and metadata reading via TagLib.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">C++</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">JUCE</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">TagLib</span>
+          </div>
+          <a href="https://github.com/AdhamSaber2357/Dual-Deck-DJ-Audio-Player-" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ablue hover:text-ateal transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="group flex flex-col rounded-lg border border-line bg-surface overflow-hidden hover:border-ateal/40 transition-colors">
+        <div class="flex items-center gap-1.5 border-b border-line px-4 py-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/40"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-green-400/40"></span>
+          <span class="ml-3 font-mono text-xs text-txt3">GameSpace.cpp</span>
+        </div>
+        <div class="flex flex-col flex-1 p-6">
+          <h3 class="font-display text-lg font-semibold text-txt">Tic-Tac-Toe Game Space</h3>
+          <p class="mt-3 text-sm text-txt2 leading-relaxed flex-1">
+            A collection of 14 Tic-Tac-Toe variants — from Standard to Ultimate to Connect Four — built around an abstract Board class and a polymorphic GameManager. A hands-on exercise in OOP design over raw game logic.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">C++</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">OOP</span>
+            <span class="rounded border border-line px-2 py-1 font-mono text-xs text-txt3">CMake</span>
+          </div>
+          <a href="https://github.com/AdhamSaber2357/Tic-Tac-Toe-Game-Space-" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ablue hover:text-ateal transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            View repository
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="relative overflow-hidden py-16 md:py-28 border-t border-line/60 scroll-mt-24">
+  <div class="pointer-events-none absolute -z-10 left-1/2 top-0 h-[380px] w-[600px] -translate-x-1/2 rounded-full opacity-20 blur-3xl" style="background: radial-gradient(circle, #4C8EFF, #22D3B3 55%, transparent 72%);"></div>
+
+  <div class="relative mx-auto max-w-3xl px-6 text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-txt"><span class="text-ateal font-mono">// </span>Contact</h2>
+    <p class="mt-4 text-txt2 max-w-xl mx-auto">Open to internship and junior backend opportunities. The fastest way to reach me is email.</p>
+
+    <div class="mt-10 grid sm:grid-cols-3 gap-4 text-left">
+      <div class="relative rounded-lg border border-line bg-surface p-5 hover:border-ateal/40 transition-colors">
+        <a href="mailto:adhamsaber2367@gmail.com" class="flex items-start gap-3 pr-6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mt-0.5 shrink-0 text-ateal">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+          <span>
+            <span class="block text-xs text-txt3">Email</span>
+            <span class="block text-txt font-mono text-sm break-all">adhamsaber2367@gmail.com</span>
+          </span>
+        </a>
+        <button id="copy-email" class="absolute top-4 right-4 text-txt3 hover:text-ateal transition-colors" aria-label="Copy email address" type="button">
+          <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+            <rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <svg id="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 hidden text-ateal">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <a href="https://github.com/AdhamSaber2357" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-line bg-surface p-5 hover:border-ateal/40 transition-colors flex items-start gap-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mt-0.5 shrink-0 text-ateal">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        <span>
+          <span class="block text-xs text-txt3">GitHub</span>
+          <span class="block text-txt font-mono text-sm">AdhamSaber2357</span>
+        </span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/adham-saber-857616334" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-line bg-surface p-5 hover:border-ateal/40 transition-colors flex items-start gap-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mt-0.5 shrink-0 text-ateal">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        <span>
+          <span class="block text-xs text-txt3">LinkedIn</span>
+          <span class="block text-txt font-mono text-sm">adham-saber</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-line/60 py-8">
+  <div class="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-txt3">
+    <span>© <span id="year"></span> Adham Saber</span>
+    <span>Built with HTML, Tailwind CSS &amp; vanilla JS</span>
+  </div>
+</footer>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Copy email to clipboard
+  const copyBtn = document.getElementById('copy-email');
+  const copyIcon = document.getElementById('copy-icon');
+  const checkIcon = document.getElementById('check-icon');
+  let copyTimeout;
+
+  copyBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText('adhamsaber2367@gmail.com');
+      copyIcon.classList.add('hidden');
+      checkIcon.classList.remove('hidden');
+      copyBtn.setAttribute('aria-label', 'Email address copied');
+      clearTimeout(copyTimeout);
+      copyTimeout = setTimeout(() => {
+        checkIcon.classList.add('hidden');
+        copyIcon.classList.remove('hidden');
+        copyBtn.setAttribute('aria-label', 'Copy email address');
+      }, 1500);
+    } catch (err) {
+      /* clipboard unavailable — mailto link still works */
+    }
+  });
+
+  // Reduced motion check
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Hero terminal typing effect
+  const codeLines = [
+    'public class AdhamSaber : Developer',
+    '{',
+    '    string Title = ".NET Backend Developer";',
+    '    string[] Stack = { "C#", "ASP.NET Core", "SQL Server", "C++" };',
+    '    string Foundation = "C++ memory management";',
+    '',
+    '    void BuildSystems()',
+    '    {',
+    '        Optimize(logic, memory);',
+    '        Ship(reliableCode: true);',
+    '    }',
+    '}',
+  ];
+  const typedCode = document.getElementById('typed-code');
+  const fullText = codeLines.join('\n');
+
+  function typeCode() {
+    if (!typedCode) return;
+    if (prefersReducedMotion) {
+      typedCode.textContent = fullText;
+      return;
+    }
+    let i = 0;
+    (function step() {
+      typedCode.textContent = fullText.slice(0, i);
+      i++;
+      if (i <= fullText.length) setTimeout(step, 12);
+    })();
+  }
+  document.addEventListener('DOMContentLoaded', () => setTimeout(typeCode, 350));
+
+  // Hero mouse-follow glow (desktop pointers only)
+  const heroSection = document.getElementById('top');
+  const heroGlow = document.getElementById('hero-glow');
+  if (heroSection && heroGlow && !prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      heroGlow.style.left = (e.clientX - rect.left) + 'px';
+      heroGlow.style.top = (e.clientY - rect.top) + 'px';
+    });
+  }
+
+  // Active nav link on scroll
+  const navLinks = document.querySelectorAll('a[data-nav]');
+  const sections = document.querySelectorAll('main section[id]');
+
+  function setActive(id) {
+    navLinks.forEach((link) => {
+      const match = link.getAttribute('href') === `#${id}`;
+      link.classList.remove('text-txt2', 'text-ateal');
+      link.classList.add(match ? 'text-ateal' : 'text-txt2');
+    });
+  }
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+  }
+</script>
+
+</body>
+</html>
